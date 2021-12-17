@@ -54,7 +54,7 @@ int worker() {
     CURLWrapper cw;
     cw.SendRequest();
     cw.SendPost();
-    return 0;
+    return 8;
 }
 
 int main(void)
@@ -65,7 +65,7 @@ int main(void)
 
     Timer t1([&](){
         std::cout << "request cnt=" << request_handle.size() << std::endl;
-        std::future<int> request = std::async(std::launch::async, worker);  // std::laynch::async인자를 사용하여 쓰레드를 바로 생성하고 실행.
+        std::future<int> request = std::async(std::launch::async, worker);  // std::launch::async인자를 사용하여 쓰레드를 바로 생성하고 실행.
         request_handle.push_back(std::move(request));
     }, 1000);
     t1.start();
@@ -77,6 +77,20 @@ int main(void)
         if(cmd.compare("q") == 0) break;
     } 
     t1.stop();
+
+    int job_done_cnt = 0;
+    for(std::vector<std::future<int>>::iterator itr = request_handle.begin();
+    itr != request_handle.end(); itr++) {
+        std::future<int> request = std::move(*itr);
+        std::future_status status = request.wait_for(std::chrono::microseconds(1));
+        if(status == std::future_status::ready) {
+            job_done_cnt++;
+        }
+        else {
+
+        }
+    }
+    std::cout << job_done_cnt << " job(s) done." << std::endl;
 
     return 0;
 }
