@@ -34,7 +34,10 @@
 #include "json/json.h"
 
 /*
-c++ 타이머
+curl c++ warpper
+https://github.com/jpbarrette/curlpp
+
+c++ promise, future, async
 https://modoocode.com/284
 
 simple c++ asynchronous timer
@@ -47,17 +50,15 @@ json parser
 https://github.com/open-source-parsers/jsoncpp
 */
 
-
 int send_post();
 int send_request();
-
-
 
 int worker() {
     send_request();
     send_post();
     return 0;
 }
+
 int main(void)
 {
     std::vector<std::future<int>> request_handle;
@@ -77,8 +78,4 @@ int main(void)
     t1.stop();
 
     return 0;
-
-    // send_request();
-    // send_post();
-    // return 0;
 }

@@ -65,11 +65,12 @@ int send_request()
       if(ok == true) {
         std::cout << "json array size=" << root.size() << std::endl;
         for(Json::Value::ArrayIndex i = 0; i < root.size(); ++i) {
-          std::cout << "postId: " << root[0]["postId"] << std::endl;
-          std::cout << "id: " << root[0]["id"] << std::endl;
-          std::cout << "name: " << root[0]["name"] << std::endl;
-          std::cout << "email: " << root[0]["email"] << std::endl;
-          std::cout << "body: " << root[0]["body"] << std::endl;
+          std::cout << "data no: " << i << std::endl;
+          std::cout << "postId: " << root[i]["postId"] << std::endl;
+          std::cout << "id: " << root[i]["id"] << std::endl;
+          std::cout << "name: " << root[i]["name"] << std::endl;
+          std::cout << "email: " << root[i]["email"] << std::endl;
+          std::cout << "body: " << root[i]["body"] << std::endl;
         }
       }
       std::cout << "OK" << std::endl;
