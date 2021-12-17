@@ -31,6 +31,7 @@
 #include <thread>
 #include <vector>
 #include "timer.h"
+#include "json/json.h"
 
 /*
 c++ 타이머
@@ -42,6 +43,8 @@ https://gist.github.com/zekroTJA/00317b41aa69f38090071b6c8065272b
 쓰레드풀
 https://github.com/progschj/ThreadPool/blob/master/ThreadPool.h
 
+json parser
+https://github.com/open-source-parsers/jsoncpp
 */
 
 
