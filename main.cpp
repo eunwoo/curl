@@ -19,10 +19,6 @@
  * KIND, either express or implied.
  *
  ***************************************************************************/
-/* <DESC>
- * simple HTTP POST using the easy interface
- * </DESC>
- */
 #include <stdio.h>
 #include <curl/curl.h>
 #include <string>
@@ -32,6 +28,7 @@
 #include <vector>
 #include "timer.h"
 #include "json/json.h"
+#include "curlwrapper.h"
 
 /*
 curl c++ warpper
@@ -54,14 +51,18 @@ int send_post();
 int send_request();
 
 int worker() {
-    send_request();
-    send_post();
+    CURLWrapper cw;
+    cw.SendRequest();
+    cw.SendPost();
     return 0;
 }
 
 int main(void)
 {
     std::vector<std::future<int>> request_handle;
+
+    CURLWrapper::Init();
+
     Timer t1([&](){
         std::cout << "request cnt=" << request_handle.size() << std::endl;
         std::future<int> request = std::async(std::launch::async, worker);  // std::laynch::async인자를 사용하여 쓰레드를 바로 생성하고 실행.

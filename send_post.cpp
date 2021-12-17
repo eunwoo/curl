@@ -13,8 +13,6 @@ int send_post()
   slist1 = nullptr;
   slist1 = curl_slist_append(slist1, "Content-Type: application/json");
 
-  /* In windows, this will init the winsock stuff */
-  curl_global_init(CURL_GLOBAL_ALL);
   /* get a curl handle */
   curl = curl_easy_init();
   if(curl) {
