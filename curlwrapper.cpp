@@ -83,7 +83,7 @@ int CURLWrapper::SendPost()
   CURL *curl;
   CURLcode res;
   struct curl_slist *slist1;
-  std::string jsonstr = "{\"nickname\":\"bob\"}";
+  std::string jsonstr = "{\"nickname\":\"John\"}";
 
   slist1 = nullptr;
   slist1 = curl_slist_append(slist1, "Content-Type: application/json");
