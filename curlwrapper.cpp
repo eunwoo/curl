@@ -112,6 +112,7 @@ int CURLWrapper::SendPost()
               curl_easy_strerror(res));
     }
     else {  // OK
+      std::cout << std::endl;
       std::cout << "OK" << std::endl;
     }
 
